@@ -1,0 +1,292 @@
+/* ===== RESET ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    user-select: none;
+    scrollbar-width: none;
+}
+
+/* ===== BODY ===== */
+body {
+    background: radial-gradient(circle at top, var(--radial-gradient-start), var(--radial-gradient-end) 80%);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-x: hidden;
+}
+
+/* ===== HEADER ===== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: var(--header-color);
+    border-bottom: 1px solid rgba(255, 216, 79, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.user-name {
+    font-weight: 600;
+    color: #ffd84f;
+    text-shadow: 0 0 6px var(--accent-color);
+    font-size: 16px;
+}
+
+.xp-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.xp-level {
+    font-weight: 600;
+    color: #ffd84f;
+    text-shadow: 0 0 6px var(--accent-color);
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+.xp-bar {
+    width: 120px;
+    height: 10px;
+    background: var(--xpBar);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 4px;
+}
+
+.xp-progress {
+    height: 100%;
+    background: linear-gradient(90deg, #ffcc00, #ffdb4f);
+    width: 70%;
+    border-radius: 4px;
+}
+
+.xp-value {
+    font-size: 12px;
+    color: var(--xp-value-color);
+}
+
+.active-items-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: #ffd84f;
+    flex-wrap: wrap;
+    max-width: 150px;
+    justify-content: flex-end;
+}
+
+.active-item-badge {
+    background: rgba(255, 216, 79, 0.2);
+    border: 1px solid rgba(255, 216, 79, 0.4);
+    border-radius: 6px;
+    padding: 4px 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    font-size: 9px;
+    white-space: nowrap;
+    min-width: 80px;
+}
+
+.active-item-name-small {
+    font-weight: 600;
+    color: #ffd84f;
+    font-size: 9px;
+    text-align: center;
+    line-height: 1.1;
+}
+
+.active-item-timer {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 8px;
+}
+
+/* ===== MAIN CONTENT ===== */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30px 20px 100px;
+}
+
+/* ===== REWARDS SECTION ===== */
+.rewards-section {
+    width: 100%;
+    max-width: 400px;
+    background: var(--card-color);
+    border: 1px solid rgba(255, 216, 79, 0.2);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(255, 216, 79, 0.08);
+    margin-bottom: 25px;
+}
+
+.section-title {
+    text-align: center;
+    color: #ffd84f;
+    text-shadow: 0 0 6px var(--accent-color);
+    font-weight: 700;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.rewards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 15px;
+}
+
+.reward-card {
+    background:  var(--rewards-card-bg);
+    border: 1px solid rgba(255, 216, 79, 0.15);
+    border-radius: 14px;
+    padding: 15px 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: var(--text-color);
+}
+
+.reward-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 15px rgba(255, 216, 79, 0.25);
+}
+
+.reward-card.unlocked {
+    background: var(--reward-unlocked-bg);
+    border-color: var(--reward-unlocked-border);
+}
+
+.reward-card.locked {
+    background: var(--reward-locked-bg);
+    border-color: var(--reward-locked-border);
+    color: var(--reward-locked-text-color);
+    opacity: 0.5;
+    filter: grayscale(1);
+}
+
+.reward-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* ===== ACHIEVEMENTS SECTION ===== */
+.achievements-section {
+    width: 100%;
+    max-width: 400px;
+    background: var(--card-color);
+    border: 1px solid rgba(255, 216, 79, 0.2);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(255, 216, 79, 0.08);
+}
+
+.achievement-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.achievement-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background: var(--achievement-item-bg);
+    border: 1px solid var(--achievement-item-border);
+}
+
+.achievement-item.completed {
+    background: var(--achievement-item-completed-bg);
+    border-color: var(--achievement-item-completed-border);
+}
+
+.achievement-item.uncompleted {
+    opacity: 0.5;
+    filter: grayscale(1);
+}
+
+.achievement-item .icon {
+    font-size: 20px;
+    color: #ffd84f;
+    text-shadow: 0 0 6px var(--accent-color);
+}
+
+.achievement-item h4 {
+    color: var(--text-color);
+    font-size: 16px;
+    margin-bottom: 3px;
+}
+
+.achievement-item p {
+    color: var(--achievement-item-description);
+    font-size: 13px;
+}
+
+/* ===== FOOTER NAV ===== */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: var(--bottom-nav-bg);
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    border-top: 1px solid rgba(255, 216, 79, 0.2);
+    backdrop-filter: blur(6px);
+    z-index: 100;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: #bbb;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 8px;
+    transition: color 0.3s ease;
+}
+
+.nav-btn.active,
+.nav-btn:hover {
+    color: var(--accent-color);
+    text-shadow: 0 0 8px var(--accent-color);
+}
+
+/* ===== POPUP EFFECT ===== */
+.popup {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100%);
+    background: rgba(255, 216, 79, 0.95);
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    box-shadow: 0 0 20px rgba(255, 216, 79, 0.4);
+    opacity: 0;
+    transition: all 0.4s ease;
+    z-index: 999;
+}
+
+.popup.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}

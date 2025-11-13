@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Daily Tasks | Virtual Life Simulator</title>
+        <link rel="stylesheet" href="../Styling/daily-tasks.css">
+        <link rel="stylesheet" href="../Styling/themeChange.css">
+    </head>
+    <body>
+
+        <!-- ===== Header / XP Bar ===== -->
+        <header class="header">
+            <div class="user-info">
+                <span class="username">Hamada MP4</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <div class="active-items-header" id="activeItemsHeader"></div>
+                <div class="xp-container">
+                    <span class="level xp-level">Level 1</span>
+                    <div class="xp-bar">
+                        <div class="xp-progress"></div>
+                    </div>
+                    <span class="xp-value"></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- ===== Main Content ===== -->
+        <main class="tasks-container">
+            <h1 class="page-title">Daily Tasks</h1>
+
+            <div class="progress-section">
+                <div class="progress-text">
+                    <span class="completed-count">0</span> / <span class="total-count">6</span> Tasks Completed
+                </div>
+                <div class="task-progress-bar">
+                    <div class="task-progress-fill" style="width: 0%;"></div>
+                </div>
+            </div>
+
+            <div class="tasks-list">
+                <!-- Task Card -->
+                <div class="task-card">
+                    <div class="task-info">
+                        <h2>Read 10 Pages</h2>
+                        <p>Improve your focus and knowledge for the day.</p>
+                    </div>
+                    <button class="complete-btn">Complete</button>
+                </div>
+
+                <div class="task-card">
+                    <div class="task-info">
+                        <h2>Workout Session</h2>
+                        <p>Boost your energy and maintain your health.</p>
+                    </div>
+                    <button class="complete-btn">Complete</button>
+                </div>
+
+                <div class="task-card">
+                    <div class="task-info">
+                        <h2>Learn Something New</h2>
+                        <p>Watch a tutorial or read an article in your field.</p>
+                    </div>
+                    <button class="complete-btn">Complete</button>
+                </div>
+
+                <div class="task-card">
+                    <div class="task-info">
+                        <h2>Meditation</h2>
+                        <p>Relax for at least 10 minutes to refresh your mind.</p>
+                    </div>
+                    <button class="complete-btn">Complete</button>
+                </div>
+
+                <div class="task-card">
+                    <div class="task-info">
+                        <h2>Plan Tomorrow</h2>
+                        <p>Write down your top 3 goals for tomorrow.</p>
+                    </div>
+                    <button class="complete-btn">Complete</button>
+                </div>
+
+                <div class="task-card">
+                    <div class="task-info">
+                        <h2>Learn Programming</h2>
+                        <p>Watch React.js course to advance in programming.</p>
+                    </div>
+                    <button class="complete-btn">Complete</button>
+                </div>
+                <div class="task-card">
+                    <div class="task-info">
+                        <h2>Be Cheerful</h2>
+                        <p>Be cheerful and positive for the day.</p>
+                    </div>
+                    <button class="complete-btn">Complete</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- ===== Footer Navigation ===== -->
+        <nav class="bottom-nav" role="navigation" aria-label="Main navigation">
+            <button class="nav-btn" data-target="home">Home</button>
+            <button class="nav-btn active" data-target="tasks">Tasks</button>
+            <button class="nav-btn" data-target="rewards">Rewards</button>
+            <button class="nav-btn" data-target="profile">Profile</button>
+        </nav>
+        <script src="../Scripting/playerData.js"></script>
+        <script src="../Scripting/dailyTracker.js"></script>
+        <script src="../Scripting/pointsSystem.js"></script>
+        <script src="../Scripting/shop.js"></script>
+        <script src="../Scripting/usernameUtils.js"></script>
+        <script src="../Scripting/tasks.js"></script>
+        <script src="../Scripting/main.js"></script>
+        <script src="../Scripting/themeChanger.js"></script>
+    </body>
+</html>

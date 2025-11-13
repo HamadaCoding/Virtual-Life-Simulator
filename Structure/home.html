@@ -1,0 +1,131 @@
+<!-- home.html -->
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Virtual Life | Home</title>
+        <link rel="stylesheet" href="../Styling/style.css">
+        <link rel="stylesheet" href="../Styling/themeChange.css">
+    </head>
+
+    <body>
+
+        <!-- ---------- APP FRAME (mobile container) ---------- -->
+        <div id="app" class="mobile-wrap">
+
+            <!-- ========== HEADER ========== -->
+            <header class="topbar">
+                <!-- username on the left -->
+                <div class="user-name" id="userName">Hamada MP4</div>
+
+                <!-- XP box and active items on the right -->
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div class="active-items-header" id="activeItemsHeader"></div>
+                    <div class="xp-box" aria-label="Experience Points">
+                        <div class="xp-level" id="xp-level">Level 1</div>
+                        <div class="xp-bar">
+                            <div class="xp-progress" id="xp-progress" style="width: 94%;"></div>
+                        </div>
+                        <div class="xp-value" id="xp-value"></div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- ---------- MAIN CONTENT ---------- -->
+            <main class="main-content">
+
+                <!-- ====== AVATAR & LEVEL CARD ====== -->
+                <section class="profile-card" aria-labelledby="profileTitle">
+                    <div class="avatar-wrap" role="img" aria-label="User avatar">
+                        <!-- Placeholder avatar -->
+                        <svg class="avatar" viewBox="0 0 100 100" width="86" height="86" aria-hidden="true">
+                            <circle cx="50" cy="35" r="20" />
+                            <rect x="20" y="58" width="60" height="24" rx="12" />
+                        </svg>
+                    </div>
+
+                    <!-- Level number -->
+                    <div class="level" id="userLevel">Level 12</div>
+
+                    <!-- Health & Motivation bars -->
+                    <div class="stats-box">
+                        <div class="stat-row">
+                            <div class="stat-label">Health</div>
+                            <div class="stat-bar">
+                                <div class="stat-fill stat-fill-health" style="width: 70%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="stat-row">
+                            <div class="stat-label">Motivation</div>
+                            <div class="stat-bar">
+                                <div class="stat-fill stat-fill-motivation" style="width: 45%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ====== TODAY SUMMARY ====== -->
+                <section class="today-summary" aria-labelledby="todayTitle">
+                    <h2 id="todayTitle" class="sr-only">Today's Summary</h2>
+                    <ul class="summary-list">
+                        <li>
+                            <span class="summary-icon">✔</span>
+                            <span class="summary-text" id="tasks-completed-text">0 Tasks Completed</span>
+                            <span class="summary-bonus" id="tasks-points">+0P</span>
+                        </li>
+                        <li>
+                            <span class="summary-icon">★</span>
+                            <span class="summary-text" id="xp-earned-text">0 XP Earned</span>
+                            <span class="summary-bonus" id="xp-points">+0P</span>
+                        </li>
+                        <li>
+                            <span class="summary-icon">🔥</span>
+                            <span class="summary-text" id="streak-text">0-Day Streak</span>
+                            <span class="summary-bonus" id="streak-points">+0P</span>
+                        </li>
+                    </ul>
+                </section>
+                <!-- ====== ACTION BUTTON ====== -->
+                <section class="start-btn-wrap">
+                    <button id="startDayBtn" class="primary-btn" aria-label="Start Your Day">
+                        Start Your Day
+                    </button>
+                </section>
+
+                <!-- ====== SHOP PREVIEW ====== -->
+                <section class="shop-preview" id="shopPreview">
+                    <h2 class="section-title">🛒 Shop Items</h2>
+                    <div class="shop-items-preview" id="shopItemsPreview">
+                        <!-- Shop items preview will be dynamically generated -->
+                    </div>
+                    <button class="shop-button" onclick="window.location.href='shop.html'">
+                        Shop Items
+                    </button>
+                </section>
+            </main>
+            <!-- ========== FOOTER NAVIGATION ========== -->
+            <nav class="bottom-nav" role="navigation" aria-label="Main navigation">
+                <button class="nav-btn active" data-target="home">Home</button>
+                <button class="nav-btn" data-target="tasks">Tasks</button>
+                <button class="nav-btn" data-target="rewards">Rewards</button>
+                <button class="nav-btn" data-target="profile">Profile</button>
+            </nav>
+        </div>
+        <!-- ---------- POPUP MESSAGE (for later) ---------- -->
+        <div class="popup hidden" id="popup">
+            <p id="popup-message"></p>
+        </div>
+        <!-- -------------- SCRIPTS -------------- -->
+        <script src="../Scripting/playerData.js"></script>
+        <script src="../Scripting/dailyTracker.js"></script>
+        <script src="../Scripting/pointsSystem.js"></script>
+        <script src="../Scripting/shop.js"></script>
+        <script src="../Scripting/usernameUtils.js"></script>
+        <script src="../Scripting/index.js" defer></script>
+        <script src="../Scripting/main.js"></script>
+        <script src="../Scripting/themeChanger.js"></script>
+    </body>
+</html>
+

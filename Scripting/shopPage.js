@@ -1,0 +1,151 @@
+// shopPage.js - Shop page functionality
+
+const shopPage = {
+    init() {
+        // Check if user is logged in
+        const currentUser = localStorage.getItem('currentUser');
+        if (!currentUser) {
+            window.location.href = '../index.html';
+            return;
+        }
+
+        this.updatePoints();
+        this.renderShopItems();
+        this.updateActiveItems();
+        this.startTimer();
+        
+        // Listen for updates
+        window.addEventListener('playerDataUpdated', () => {
+            this.updatePoints();
+            this.updateActiveItems();
+        });
+    },
+
+    updatePoints() {
+        if (!window.pointsSystem) return;
+        
+        const pointsData = window.pointsSystem.calculateTotalPoints();
+        const pointsDisplay = document.getElementById('pointsDisplay');
+        const totalPoints = document.getElementById('totalPoints');
+        
+        if (pointsDisplay) {
+            pointsDisplay.textContent = `${pointsData.total} Points`;
+        }
+        if (totalPoints) {
+            totalPoints.textContent = pointsData.total;
+        }
+    },
+
+    renderShopItems() {
+        if (!window.shop) return;
+        
+        const grid = document.getElementById('shopItemsGrid');
+        if (!grid) return;
+        
+        grid.innerHTML = '';
+        
+        window.shop.SHOP_ITEMS.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'shop-item-card';
+            
+            const pointsData = window.pointsSystem.calculateTotalPoints();
+            const canAfford = pointsData.total >= item.cost;
+            
+            card.innerHTML = `
+                <div class="item-header">
+                    <span class="item-icon">${item.icon}</span>
+                    <span class="item-name">${item.name}</span>
+                </div>
+                <div class="item-description">${item.description}</div>
+                <div class="item-details">
+                    <div class="item-duration">
+                        <span>⏱️</span>
+                        <span>Duration: ${item.duration} day${item.duration !== 1 ? 's' : ''}</span>
+                    </div>
+                    <div class="item-cost">💰 ${item.cost} Points</div>
+                </div>
+                <button class="buy-button" ${!canAfford ? 'disabled' : ''} onclick="shopPage.purchaseItem('${item.id}')">
+                    ${canAfford ? 'Buy Now' : 'Not Enough Points'}
+                </button>
+            `;
+            
+            grid.appendChild(card);
+        });
+    },
+
+    purchaseItem(itemId) {
+        if (!window.shop) return;
+        
+        const result = window.shop.purchaseItem(itemId);
+        
+        if (result.success) {
+            this.showPopup(result.message, false);
+            this.updatePoints();
+            this.renderShopItems();
+            this.updateActiveItems();
+        } else {
+            this.showPopup(result.message, true);
+        }
+    },
+
+    showPopup(message, isError = false) {
+        const popup = document.getElementById('popup');
+        const popupMessage = document.getElementById('popupMessage');
+        
+        if (!popup || !popupMessage) return;
+        
+        popupMessage.textContent = message;
+        popup.classList.remove('hidden');
+        if (isError) {
+            popup.classList.add('error');
+        } else {
+            popup.classList.remove('error');
+        }
+    },
+
+    updateActiveItems() {
+        if (!window.shop) return;
+        
+        const header = document.getElementById('activeItemsHeader');
+        if (!header) return;
+        
+        const activeItems = window.shop.getActiveItems();
+        
+        if (activeItems.length === 0) {
+            header.innerHTML = '';
+            return;
+        }
+        
+        header.innerHTML = activeItems.map(item => {
+            const timeRemaining = window.shop.formatTimeRemaining(item);
+            return `
+                <div class="active-item-badge" title="${item.name}">
+                    <div class="active-item-name-small">${item.name}</div>
+                    <div class="active-item-timer">
+                        <span>${item.icon}</span>
+                        <span>${timeRemaining}</span>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    },
+
+    startTimer() {
+        // Update active items timer every second
+        setInterval(() => {
+            this.updateActiveItems();
+        }, 1000);
+    }
+};
+
+// Global function for popup close
+function closePopup() {
+    const popup = document.getElementById('popup');
+    if (popup) {
+        popup.classList.add('hidden');
+    }
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => shopPage.init());
+

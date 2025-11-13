@@ -1,0 +1,101 @@
+<!-- rewards.html -->
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Virtual Life | Rewards</title>
+        <link rel="stylesheet" href="../styling/rewards.css">
+        <link rel="stylesheet" href="../styling/themeChange.css">
+    </head>
+
+    <body>
+        <div id="app" class="mobile-wrap">
+            <!-- ========== HEADER ========== -->
+            <header class="topbar">
+                <div class="user-name">Hamada MP4</div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div class="active-items-header" id="activeItemsHeader"></div>
+                    <div class="xp-box">
+                        <div class="xp-level">Level 1</div>
+                        <div class="xp-bar">
+                            <div class="xp-progress" style="width: 70%;"></div>
+                        </div>
+                        <div class="xp-value">470 / 500 XP</div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- ========== MAIN CONTENT ========== -->
+            <main class="main-content">
+                <section class="rewards-section">
+                    <h2 class="section-title">🎁 Rewards</h2>
+                    <div class="rewards-grid">
+                        <div class="reward-card unlocked">
+                            <div class="reward-icon">⭐</div>
+                            <h3>Level Up Bonus</h3>
+                            <p>+50 XP</p>
+                        </div>
+
+                        <div class="reward-card locked">
+                            <div class="reward-icon">💎</div>
+                            <h3>Elite Member</h3>
+                            <p>Reach Level 15</p>
+                        </div>
+
+                        <div class="reward-card locked">
+                            <div class="reward-icon">🚀</div>
+                            <h3>Speed Booster</h3>
+                            <p>Unlock at Level 20</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="achievements-section">
+                    <h2 class="section-title">🏆 Achievements</h2>
+                    <ul class="achievement-list">
+                        <li class="achievement-item completed">
+                            <span class="icon">🔥</span>
+                            <div>
+                                <h4>3-Day Streak</h4>
+                                <p>Stay active for 3 consecutive days.</p>
+                            </div>
+                        </li>
+
+                        <li class="achievement-item uncompleted">
+                            <span class="icon">📅</span>
+                            <div>
+                                <h4>Task Master</h4>
+                                <p>Complete 10 daily tasks.</p>
+                            </div>
+                        </li>
+
+                        <li class="achievement-item uncompleted">
+                            <span class="icon">⚡</span>
+                            <div>
+                                <h4>Quick Starter</h4>
+                                <p>Start your day before 8 AM for 5 days.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+            </main>
+
+            <!-- ========== FOOTER NAV ========== -->
+            <nav class="bottom-nav" role="navigation" aria-label="Main navigation">
+                <button class="nav-btn" data-target="home">Home</button>
+                <button class="nav-btn" data-target="tasks">Tasks</button>
+                <button class="nav-btn active" data-target="rewards">Rewards</button>
+                <button class="nav-btn" data-target="profile">Profile</button>
+            </nav>
+        </div>
+        <script src="../Scripting/playerData.js"></script>
+        <script src="../Scripting/dailyTracker.js"></script>
+        <script src="../Scripting/pointsSystem.js"></script>
+        <script src="../Scripting/shop.js"></script>
+        <script src="../Scripting/usernameUtils.js"></script>
+        <script src="../Scripting/main.js"></script>
+        <script src="../Scripting/rewards.js"></script>
+        <script src="../Scripting/themeChanger.js"></script>
+    </body>
+</html>

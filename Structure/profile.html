@@ -1,0 +1,114 @@
+<!-- profile.html -->
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Virtual Life | Profile</title>
+        <link rel="stylesheet" href="../Styling/profile.css">
+        <link rel="stylesheet" href="../Styling/themeChange.css">
+    </head>
+
+    <body>
+        <div id="app" class="mobile-wrap">
+
+            <!-- HEADER -->
+            <header class="topbar">
+                <div class="user-name">Hamada MP4</div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div class="active-items-header" id="activeItemsHeader"></div>
+                    <div class="xp-box">
+                        <div class="xp-level">Level 1</div>
+                        <div class="xp-bar">
+                            <div class="xp-progress"></div>
+                        </div>
+                        <div class="xp-value">470 / 500</div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- MAIN PROFILE CONTENT -->
+            <main class="main-content profile-content">
+                <!-- Avatar -->
+                <div class="avatar-section">
+                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="User avatar" class="avatar-img" />
+                    <h2 class="player-name">Hamada MP4</h2>
+                    <p class="player-title">Digital Life Explorer 🌍</p>
+                </div>
+
+                <!-- Stats Grid -->
+                <section class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Level</h3>
+                        <p id="profile-level">1</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total XP</h3>
+                        <p id="total-xp">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Tasks Done</h3>
+                        <p id="tasks-done">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Streak</h3>
+                        <p id="streak-display">0 days 🔥</p>
+                    </div>
+                </section>
+
+                <!-- Active Items -->
+                <section class="active-items-section" id="activeItemsSection">
+                    <h2 class="section-title">Active Items</h2>
+                    <div class="active-items-list" id="activeItemsList">
+                        <!-- Active items will be dynamically generated -->
+                    </div>
+                </section>
+
+                <!-- Achievements -->
+                <section class="achievements">
+                    <h2 class="section-title">Achievements</h2>
+                    <ul class="achievements-list">
+                        <li><span>🏅</span> First Task Completed</li>
+                        <li><span>🔥</span> 3-Day Streak</li>
+                        <li><span>🎯</span> Consistent Learner</li>
+                    </ul>
+                </section>
+
+                <!-- Settings -->
+                <section class="settings">
+                    <h2 class="section-title">Settings</h2>
+                    <div class="settings-option">
+                        <label>Dark Mode</label>
+                        <input type="checkbox" id="themeSwitch" checked>
+                    </div>
+                    <div class="settings-option">
+                        <label>Notifications</label>
+                        <input type="checkbox" checked>
+                    </div>
+                </section>
+
+                <!-- Logout Button -->
+                <section class="logout-section">
+                    <button class="logout-btn" id="logoutBtn" onclick="logout(); return false;">🚪 Log Out</button>
+                </section>
+            </main>
+
+            <!-- FOOTER NAV -->
+            <nav class="bottom-nav">
+                <button class="nav-btn" data-target="home">Home</button>
+                <button class="nav-btn" data-target="tasks">Tasks</button>
+                <button class="nav-btn" data-target="rewards">Rewards</button>
+                <button class="nav-btn active" data-target="profile">Profile</button>
+            </nav>
+        </div>
+        <script src="../Scripting/playerData.js"></script>
+        <script src="../Scripting/dailyTracker.js"></script>
+        <script src="../Scripting/pointsSystem.js"></script>
+        <script src="../Scripting/shop.js"></script>
+        <script src="../Scripting/usernameUtils.js"></script>
+        <script src="../Scripting/main.js"></script>
+        <script src="../Scripting/profile.js"></script>
+        <script src="../Scripting/themeChanger.js"></script>
+        <script src="../Scripting/login.js"></script>
+    </body>
+</html>

@@ -1,0 +1,66 @@
+<!-- shop.html -->
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Virtual Life | Shop</title>
+        <link rel="stylesheet" href="../Styling/shop.css">
+        <link rel="stylesheet" href="../Styling/themeChange.css">
+    </head>
+
+    <body>
+        <div id="app" class="mobile-wrap">
+            <!-- ========== HEADER ========== -->
+            <header class="topbar">
+                <div class="user-name" id="userName">User</div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div class="active-items-header" id="activeItemsHeader"></div>
+                    <div class="points-display">
+                        <span>💰</span>
+                        <span id="pointsDisplay">0 Points</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- ========== MAIN CONTENT ========== -->
+            <main class="main-content">
+                <h1 class="shop-title">🛒 Shop</h1>
+                
+                <div class="points-info">
+                    <h3>Your Points</h3>
+                    <div class="points-amount" id="totalPoints">0</div>
+                </div>
+
+                <div class="shop-items-grid" id="shopItemsGrid">
+                    <!-- Shop items will be dynamically generated -->
+                </div>
+            </main>
+
+            <!-- ========== FOOTER NAV ========== -->
+            <nav class="bottom-nav" role="navigation" aria-label="Main navigation">
+                <button class="nav-btn" data-target="home">Home</button>
+                <button class="nav-btn" data-target="tasks">Tasks</button>
+                <button class="nav-btn" data-target="rewards">Rewards</button>
+                <button class="nav-btn" data-target="profile">Profile</button>
+            </nav>
+        </div>
+
+        <!-- Popup for messages -->
+        <div class="popup hidden" id="popup">
+            <div class="popup-message" id="popupMessage"></div>
+            <button class="popup-button" onclick="closePopup()">OK</button>
+        </div>
+
+        <!-- -------------- SCRIPTS -------------- -->
+        <script src="../Scripting/playerData.js"></script>
+        <script src="../Scripting/dailyTracker.js"></script>
+        <script src="../Scripting/pointsSystem.js"></script>
+        <script src="../Scripting/shop.js"></script>
+        <script src="../Scripting/usernameUtils.js"></script>
+        <script src="../Scripting/main.js"></script>
+        <script src="../Scripting/shopPage.js"></script>
+        <script src="../Scripting/themeChanger.js"></script>
+    </body>
+</html>
+
