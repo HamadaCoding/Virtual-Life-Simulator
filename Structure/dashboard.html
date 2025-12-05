@@ -1,0 +1,173 @@
+<!-- dashboard.html -->
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Virtual Life | Dashboard</title>
+        <link rel="stylesheet" href="../Styling/style.css">
+        <link rel="stylesheet" href="../Styling/themeChange.css">
+        <link rel="stylesheet" href="../Styling/dashboard.css">
+    </head>
+
+    <body>
+        <div id="app" class="mobile-wrap">
+            <!-- ========== HEADER ========== -->
+            <header class="topbar">
+                <div class="user-name" id="userName">User</div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div class="active-items-header" id="activeItemsHeader"></div>
+                    <div class="xp-box" aria-label="Experience Points">
+                        <div class="xp-level" id="xp-level">Level 1</div>
+                        <div class="xp-bar">
+                            <div class="xp-progress" id="xp-progress" style="width: 0%;"></div>
+                        </div>
+                        <div class="xp-value" id="xp-value">0 / 500</div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- ========== MAIN CONTENT ========== -->
+            <main class="main-content dashboard-content">
+                <h1 class="dashboard-title">📊 Virtual Life Dashboard</h1>
+                
+                <!-- Stats Overview -->
+                <section class="dashboard-section">
+                    <h2 class="section-title">📈 Your Stats</h2>
+                    <div class="stats-grid-dashboard">
+                        <div class="stat-card-dashboard">
+                            <div class="stat-icon">🎯</div>
+                            <div class="stat-info">
+                                <div class="stat-label-dashboard">Total XP</div>
+                                <div class="stat-value" id="totalXpStat">0</div>
+                            </div>
+                        </div>
+                        <div class="stat-card-dashboard">
+                            <div class="stat-icon">✅</div>
+                            <div class="stat-info">
+                                <div class="stat-label-dashboard">Tasks Completed</div>
+                                <div class="stat-value" id="tasksCompletedStat">0</div>
+                            </div>
+                        </div>
+                        <div class="stat-card-dashboard">
+                            <div class="stat-icon">🔥</div>
+                            <div class="stat-info">
+                                <div class="stat-label-dashboard">Streak</div>
+                                <div class="stat-value" id="streakStat">0 days</div>
+                            </div>
+                        </div>
+                        <div class="stat-card-dashboard">
+                            <div class="stat-icon">💰</div>
+                            <div class="stat-info">
+                                <div class="stat-label-dashboard">Points</div>
+                                <div class="stat-value" id="pointsStat">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Rank & Class -->
+                <section class="dashboard-section">
+                    <h2 class="section-title">🏆 Rank & Class</h2>
+                    <div class="rank-display">
+                        <div class="rank-info-card">
+                            <div class="rank-tier" id="rankTier">E</div>
+                            <div class="rank-details">
+                                <div class="rank-name" id="rankName">Beginner</div>
+                                <div class="rank-class" id="rankClass">⭐ Adventurer</div>
+                            </div>
+                        </div>
+                        <div class="rank-progress">
+                            <div class="rank-progress-label">Progress to next rank</div>
+                            <div class="rank-progress-bar">
+                                <div class="rank-progress-fill" id="rankProgressFill" style="width: 0%;"></div>
+                            </div>
+                            <div class="rank-progress-text" id="rankProgressText">0%</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Quick Actions -->
+                <section class="dashboard-section">
+                    <h2 class="section-title">⚡ Quick Actions</h2>
+                    <div class="quick-actions">
+                        <button class="action-btn" onclick="window.location.href='daily-tasks.html'">
+                            <span class="action-icon">📝</span>
+                            <span class="action-text">View Tasks</span>
+                        </button>
+                        <button class="action-btn" onclick="window.location.href='shop.html'">
+                            <span class="action-icon">🛒</span>
+                            <span class="action-text">Shop</span>
+                        </button>
+                        <button class="action-btn" onclick="window.location.href='rewards.html'">
+                            <span class="action-icon">🎁</span>
+                            <span class="action-text">Rewards</span>
+                        </button>
+                        <button class="action-btn" onclick="window.location.href='profile.html'">
+                            <span class="action-icon">👤</span>
+                            <span class="action-text">Profile</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Recent Activity -->
+                <section class="dashboard-section">
+                    <h2 class="section-title">📋 Recent Activity</h2>
+                    <div class="activity-list" id="activityList">
+                        <div class="activity-item">
+                            <span class="activity-icon">✨</span>
+                            <span class="activity-text">Welcome to Virtual Life!</span>
+                            <span class="activity-time">Just now</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Virtual Life Features -->
+                <section class="dashboard-section">
+                    <h2 class="section-title">🎮 Virtual Life Features</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🏠</div>
+                            <div class="feature-title">Virtual Home</div>
+                            <div class="feature-desc">Decorate and upgrade your virtual space</div>
+                            <button class="feature-btn" disabled>Coming Soon</button>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">👥</div>
+                            <div class="feature-title">Social Hub</div>
+                            <div class="feature-desc">Connect with other players</div>
+                            <button class="feature-btn" disabled>Coming Soon</button>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🎯</div>
+                            <div class="feature-title">Challenges</div>
+                            <div class="feature-desc">Complete special challenges</div>
+                            <button class="feature-btn" disabled>Coming Soon</button>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- ========== FOOTER NAV ========== -->
+            <nav class="bottom-nav" role="navigation" aria-label="Main navigation">
+                <button class="nav-btn" data-target="home">Home</button>
+                <button class="nav-btn" data-target="tasks">Tasks</button>
+                <button class="nav-btn" data-target="rewards">Rewards</button>
+                <button class="nav-btn" data-target="profile">Profile</button>
+            </nav>
+        </div>
+
+        <!-- Scripts -->
+        <script src="../Scripting/playerData.js"></script>
+        <script src="../Scripting/dailyTracker.js"></script>
+        <script src="../Scripting/pointsSystem.js"></script>
+        <script src="../Scripting/shop.js"></script>
+        <script src="../Scripting/usernameUtils.js"></script>
+        <script src="../Scripting/decorationUtils.js"></script>
+        <script src="../Scripting/rankSystem.js"></script>
+        <script src="../Scripting/dashboard.js"></script>
+        <script src="../Scripting/main.js"></script>
+        <script src="../Scripting/themeChanger.js"></script>
+    </body>
+</html>
+

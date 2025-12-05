@@ -16,11 +16,24 @@ const defaultPlayerData = {
     tasks_completed: [],
     total_tasks_completed: 0,
     last_reset_time: null,
+    last_reset_date: null, // Day key format (YYYY-MM-DD) for consistency with dailyTracker
     rewards_unlocked: [],
     streak: 0,
     last_activity_date: null,
     total_points: 0,
-    active_items: []
+    active_items: [],
+    custom_tasks: [],
+    custom_tasks_completed: [],
+    decorations: {},
+    spent_today_points: 0,
+    // New systems
+    player_class: 'GENERAL', // Class type: STUDENT, ATHLETE, PROGRAMMER, LANGUAGE_LEARNER, GENERAL
+    stats: {}, // Player stats
+    skillTree: {}, // Skill tree progress
+    activeBonuses: {}, // Active skill bonuses
+    quests: [], // Player quests
+    inventory: {}, // Player inventory
+    avatar: 'default' // Avatar selection
 };
 
 // Global player data state

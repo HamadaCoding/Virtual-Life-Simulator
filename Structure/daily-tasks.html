@@ -39,7 +39,54 @@
                 </div>
             </div>
 
-            <div class="tasks-list">
+            <!-- Goal-Based Task Generator -->
+            <div class="goal-task-section">
+                <h2 class="section-title">Generate Tasks from Goals</h2>
+                <div class="goal-form">
+                    <label for="goalCategory">Select Your Goal Category:</label>
+                    <select id="goalCategory" class="goal-select">
+                        <option value="">Choose a category...</option>
+                        <option value="fitness">💪 Fitness & Health</option>
+                        <option value="learning">📚 Learning & Education</option>
+                        <option value="career">💼 Career & Work</option>
+                        <option value="creativity">🎨 Creativity & Hobbies</option>
+                        <option value="social">👥 Social & Relationships</option>
+                        <option value="mindfulness">🧘 Mindfulness & Mental Health</option>
+                        <option value="finance">💰 Finance & Money</option>
+                        <option value="custom">✏️ Custom Goal</option>
+                    </select>
+                    <textarea id="goalDescription" class="goal-textarea" placeholder="Describe your specific goal (optional, but recommended for better task generation)..." rows="3"></textarea>
+                    <button id="generateTasksBtn" class="generate-tasks-btn">Generate Tasks</button>
+                </div>
+            </div>
+
+            <!-- Custom Task Input -->
+            <div class="custom-task-section">
+                <h2 class="section-title">Add Custom Task</h2>
+                <div class="custom-task-form">
+                    <input type="text" id="taskNameInput" class="task-input" placeholder="Enter task name..." />
+                    <input type="text" id="taskDescriptionInput" class="task-input" placeholder="Enter task description (optional)" />
+                    <button id="addTaskBtn" class="add-task-btn">Add Task</button>
+                </div>
+            </div>
+
+            <!-- Empty Tasks Message -->
+            <div class="empty-tasks-message" id="emptyTasksMessage" style="display: none;">
+                <div class="empty-tasks-content">
+                    <h3>📝 No Tasks Yet!</h3>
+                    <p>Get started by adding your own tasks or generating tasks based on your goals.</p>
+                    <div class="empty-tasks-instructions">
+                        <h4>How to add tasks:</h4>
+                        <ol>
+                            <li>Use the <strong>"Generate Tasks from Goals"</strong> section above to create tasks based on your goals</li>
+                            <li>Or use the <strong>"Add Custom Task"</strong> section to manually create tasks</li>
+                            <li>Complete tasks to earn XP and progress!</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tasks-list" id="tasksList">
                 <!-- Task Card -->
                 <div class="task-card">
                     <div class="task-info">
@@ -110,6 +157,14 @@
         <script src="../Scripting/pointsSystem.js"></script>
         <script src="../Scripting/shop.js"></script>
         <script src="../Scripting/usernameUtils.js"></script>
+        <script src="../Scripting/decorationUtils.js"></script>
+        <script src="../Scripting/taskResetSystem.js"></script>
+        <!-- New Systems -->
+        <script src="../Scripting/rankSystem.js"></script>
+        <script src="../Scripting/questSystem.js"></script>
+        <script src="../Scripting/statsSystem.js"></script>
+        <script src="../Scripting/inventorySystem.js"></script>
+        <!-- End New Systems -->
         <script src="../Scripting/tasks.js"></script>
         <script src="../Scripting/main.js"></script>
         <script src="../Scripting/themeChanger.js"></script>

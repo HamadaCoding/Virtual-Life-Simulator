@@ -151,6 +151,12 @@ header {
     border-radius: 50%;
     background: radial-gradient(circle, var(--radial-gradient-start) 30%, var(--radial-gradient-end) 100%);
     box-shadow: 0 0 15px var(--avatar-glow);
+    animation: fire 2s alternate infinite;
+}
+
+@keyframes fire {
+    0% { box-shadow: 0 0 0 rgba(255, 255, 0, 0.3) }
+    100% { box-shadow: 0 0 15px rgba(255, 255, 0, 0.4)}
 }
 
 .level {

@@ -126,6 +126,17 @@ header {
     margin-bottom: 20px;
 }
 
+.shop-section-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffd84f;
+    text-align: left;
+    margin: 20px 0 15px 0;
+    text-shadow: 0 0 8px var(--accent-color);
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(255, 216, 79, 0.3);
+}
+
 .shop-item-card {
     background: var(--card-color);
     border: 1px solid rgba(255, 216, 79, 0.2);
@@ -220,28 +231,30 @@ header {
     bottom: 0;
     left: 0;
     width: 100%;
-    background: var(--header-color);
-    border-top: 1px solid rgba(255, 216, 79, 0.2);
+    background: var(--bottom-nav-bg);
     display: flex;
     justify-content: space-around;
-    padding: 12px 0;
-    backdrop-filter: blur(10px);
+    padding: 10px 0;
+    border-top: 1px solid rgba(255, 216, 79, 0.2);
+    backdrop-filter: blur(6px);
+    z-index: 100;
 }
 
 .nav-btn {
     background: none;
     border: none;
     color: var(--text-color);
-    font-size: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
     cursor: pointer;
-    padding: 8px 16px;
-    border-radius: 8px;
+    padding: 8px;
     transition: all 0.3s ease;
 }
 
-.nav-btn.active {
-    color: #ffd84f;
-    background: rgba(255, 216, 79, 0.1);
+.nav-btn.active,
+.nav-btn:hover {
+    color: var(--accent-color);
+    text-shadow: 0 0 8px var(--accent-color);
 }
 
 /* ===== POPUP ===== */

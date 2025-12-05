@@ -44,33 +44,79 @@ const shopPage = {
         
         grid.innerHTML = '';
         
-        window.shop.SHOP_ITEMS.forEach(item => {
-            const card = document.createElement('div');
-            card.className = 'shop-item-card';
+        // Separate items by category
+        const items = window.shop.SHOP_ITEMS.filter(item => item.category === 'items');
+        const decorations = window.shop.SHOP_ITEMS.filter(item => item.category === 'decoration');
+        
+        // Render Items section
+        if (items.length > 0) {
+            const itemsTitle = document.createElement('h2');
+            itemsTitle.className = 'shop-section-title';
+            itemsTitle.textContent = 'Items';
+            grid.appendChild(itemsTitle);
             
-            const pointsData = window.pointsSystem.calculateTotalPoints();
-            const canAfford = pointsData.total >= item.cost;
+            items.forEach(item => {
+                grid.appendChild(this.createItemCard(item));
+            });
+        }
+        
+        // Render Decoration section
+        if (decorations.length > 0) {
+            const decorationTitle = document.createElement('h2');
+            decorationTitle.className = 'shop-section-title';
+            decorationTitle.textContent = 'Decoration';
+            decorationTitle.style.marginTop = '40px';
+            grid.appendChild(decorationTitle);
             
-            card.innerHTML = `
-                <div class="item-header">
-                    <span class="item-icon">${item.icon}</span>
-                    <span class="item-name">${item.name}</span>
-                </div>
-                <div class="item-description">${item.description}</div>
-                <div class="item-details">
-                    <div class="item-duration">
-                        <span>⏱️</span>
-                        <span>Duration: ${item.duration} day${item.duration !== 1 ? 's' : ''}</span>
-                    </div>
-                    <div class="item-cost">💰 ${item.cost} Points</div>
-                </div>
-                <button class="buy-button" ${!canAfford ? 'disabled' : ''} onclick="shopPage.purchaseItem('${item.id}')">
-                    ${canAfford ? 'Buy Now' : 'Not Enough Points'}
-                </button>
-            `;
-            
-            grid.appendChild(card);
-        });
+            decorations.forEach(item => {
+                grid.appendChild(this.createItemCard(item));
+            });
+        }
+    },
+    
+    createItemCard(item) {
+        const card = document.createElement('div');
+        card.className = 'shop-item-card';
+        
+        const pointsData = window.pointsSystem.calculateTotalPoints();
+        const canAfford = pointsData.total >= item.cost;
+        
+        // Build duration text - show "Instant" for instant items, "Permanent" for decorations
+        let durationText = '';
+        if (item.duration === 0) {
+            if (item.effect === 'instant_health' || item.effect === 'instant_motivation') {
+                durationText = '<div class="item-duration"><span>⚡</span><span>Instant</span></div>';
+            } else {
+                durationText = '<div class="item-duration"><span>♾️</span><span>Permanent</span></div>';
+            }
+        } else {
+            durationText = `<div class="item-duration"><span>⏱️</span><span>Duration: ${item.duration} day${item.duration !== 1 ? 's' : ''}</span></div>`;
+        }
+        
+        card.innerHTML = `
+            <div class="item-header">
+                <span class="item-icon">${item.icon}</span>
+                <span class="item-name">${item.name}</span>
+            </div>
+            <div class="item-description">${item.description}</div>
+            <div class="item-details">
+                ${durationText}
+                <div class="item-cost">💰 ${item.cost} Points</div>
+            </div>
+            <button class="buy-button" data-item-id="${item.id}" ${!canAfford ? 'disabled' : ''}>
+                ${canAfford ? 'Buy Now' : 'Not Enough Points'}
+            </button>
+        `;
+        
+        // Add click event listener
+        const buyButton = card.querySelector('.buy-button');
+        if (buyButton) {
+            buyButton.addEventListener('click', () => {
+                this.purchaseItem(item.id);
+            });
+        }
+        
+        return card;
     },
 
     purchaseItem(itemId) {
@@ -148,4 +194,3 @@ function closePopup() {
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => shopPage.init());
-

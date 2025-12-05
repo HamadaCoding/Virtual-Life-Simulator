@@ -32,6 +32,8 @@ const app = {
             userName: document.querySelector(".user-name"),
             playerName: document.querySelector(".player-name"),
             streakDisplay: document.getElementById("streak-display"),
+            rankTitle: document.getElementById("rank-title"),
+            classDisplay: document.getElementById("player-class-display"),
         };
 
         // Update username displays
@@ -132,6 +134,25 @@ const app = {
             }
         }
         
+        // Update Rank and Class display
+        if (window.rankSystem) {
+            const rankInfo = window.rankSystem.getPlayerRank();
+            if (rankInfo) {
+                const rankTitleEl = document.getElementById('rank-title');
+                const classDisplayEl = document.getElementById('player-class-display');
+                
+                if (rankTitleEl) {
+                    rankTitleEl.textContent = `${rankInfo.tier} - ${rankInfo.rankName}`;
+                    rankTitleEl.style.color = rankInfo.color || '#F39C12';
+                }
+                
+                if (classDisplayEl) {
+                    classDisplayEl.textContent = `${rankInfo.icon} ${rankInfo.className}`;
+                    classDisplayEl.style.color = rankInfo.color || '#F39C12';
+                }
+            }
+        }
+        
         // Update streak display
         if (this.elements.streakDisplay) {
             if (window.dailyTracker) {
@@ -143,6 +164,84 @@ const app = {
                 this.elements.streakDisplay.textContent = `${streak} day${streak !== 1 ? 's' : ''} 🔥`;
             }
         }
+        
+        // Apply decorations (use global utility)
+        if (window.decorationUtils) {
+            window.decorationUtils.applyDecorations();
+        }
+        
+        // Update inventory display
+        this.updateInventoryDisplay();
+    },
+    
+    updateInventoryDisplay() {
+        if (!window.inventorySystem) return;
+        
+        const inventory = window.inventorySystem.getInventory();
+        const inventorySection = document.getElementById('inventorySection');
+        
+        // Create inventory section if it doesn't exist
+        if (!inventorySection) {
+            const activeItemsSection = document.getElementById('activeItemsSection');
+            if (activeItemsSection && activeItemsSection.parentNode) {
+                const newSection = document.createElement('section');
+                newSection.className = 'inventory-section';
+                newSection.id = 'inventorySection';
+                newSection.innerHTML = `
+                    <h2 class="section-title">Inventory</h2>
+                    <div class="inventory-list" id="inventoryList">
+                        <!-- Inventory items will be displayed here -->
+                    </div>
+                `;
+                activeItemsSection.parentNode.insertBefore(newSection, activeItemsSection.nextSibling);
+            }
+        }
+        
+        const inventoryList = document.getElementById('inventoryList');
+        if (!inventoryList) return;
+        
+        const itemEntries = Object.entries(inventory);
+        
+        if (itemEntries.length === 0) {
+            inventoryList.innerHTML = '<p style="color: var(--text-color); opacity: 0.7; text-align: center; padding: 20px;">No items in inventory</p>';
+            return;
+        }
+        
+        inventoryList.innerHTML = itemEntries.map(([itemId, quantity]) => {
+            const itemDef = Object.values(window.inventorySystem.ITEM_TYPES).find(item => item.id === itemId);
+            if (!itemDef) return '';
+            
+            return `
+                <div class="inventory-item-card">
+                    <div class="inventory-item-icon">${itemDef.icon}</div>
+                    <div class="inventory-item-info">
+                        <div class="inventory-item-name">${itemDef.name}</div>
+                        <div class="inventory-item-description">${itemDef.description}</div>
+                        <div class="inventory-item-quantity">Quantity: ${quantity}</div>
+                    </div>
+                    <button class="use-item-btn" data-item-id="${itemId}">Use</button>
+                </div>
+            `;
+        }).join('');
+        
+        // Add event listeners for use buttons
+        inventoryList.querySelectorAll('.use-item-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const itemId = e.target.dataset.itemId;
+                if (itemId && window.inventorySystem) {
+                    const result = window.inventorySystem.useItem(itemId);
+                    if (result.success) {
+                        showPopup(result.message);
+                        this.updateInventoryDisplay();
+                        this.updateUI();
+                        // Trigger update event for other pages
+                        window.dispatchEvent(new CustomEvent('playerDataUpdated'));
+                    } else {
+                        showPopup(result.message || 'Failed to use item');
+                    }
+                }
+            });
+        });
     },
 
     gainXp(amount) {

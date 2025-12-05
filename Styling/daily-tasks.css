@@ -148,6 +148,71 @@ body {
     transition: width 0.3s ease;
 }
 
+/* ===== CUSTOM TASK SECTION ===== */
+.custom-task-section {
+    background: var(--card-color);
+    border: 1px solid var(--card-shadow);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffd84f;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.custom-task-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.task-input {
+    width: 100%;
+    padding: 12px;
+    background: var(--card-color);
+    border: 2px solid rgba(255, 216, 79, 0.3);
+    border-radius: 10px;
+    color: var(--text-color);
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.task-input:focus {
+    outline: none;
+    border-color: #ffd84f;
+    box-shadow: 0 0 10px rgba(255, 216, 79, 0.3);
+}
+
+.task-input::placeholder {
+    color: #888;
+}
+
+.add-task-btn {
+    padding: 12px;
+    background: linear-gradient(135deg, #ffd84f, #ffcc00);
+    border: none;
+    border-radius: 10px;
+    color: #000;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.add-task-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 216, 79, 0.4);
+}
+
+.add-task-btn:active {
+    transform: translateY(0);
+}
+
 /* ===== TASK CARDS ===== */
 .tasks-list {
     display: flex;
@@ -258,4 +323,162 @@ body {
 .popup-message.show {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
+}
+
+/* ===== RANK TASK STYLES ===== */
+.rank-task-card {
+    border: 2px solid rgba(255, 216, 79, 0.5) !important;
+    background: linear-gradient(135deg, var(--card-color), rgba(255, 216, 79, 0.1)) !important;
+    box-shadow: 0 0 15px rgba(255, 216, 79, 0.2) !important;
+}
+
+.rank-task-card:hover {
+    box-shadow: 0 0 20px rgba(255, 216, 79, 0.4) !important;
+    border-color: rgba(255, 216, 79, 0.8) !important;
+}
+
+.rank-task-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-left: 8px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ===== GOAL TASK GENERATOR ===== */
+.goal-task-section {
+    background: var(--card-color);
+    border: 1px solid var(--card-shadow);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.goal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.goal-form label {
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.goal-select {
+    width: 100%;
+    padding: 12px;
+    background: var(--card-color);
+    border: 2px solid rgba(255, 216, 79, 0.3);
+    border-radius: 10px;
+    color: var(--text-color);
+    font-size: 14px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.goal-select:focus {
+    outline: none;
+    border-color: #ffd84f;
+    box-shadow: 0 0 10px rgba(255, 216, 79, 0.3);
+}
+
+.goal-textarea {
+    width: 100%;
+    padding: 12px;
+    background: var(--card-color);
+    border: 2px solid rgba(255, 216, 79, 0.3);
+    border-radius: 10px;
+    color: var(--text-color);
+    font-size: 14px;
+    font-family: sans-serif;
+    resize: vertical;
+    transition: all 0.3s ease;
+}
+
+.goal-textarea:focus {
+    outline: none;
+    border-color: #ffd84f;
+    box-shadow: 0 0 10px rgba(255, 216, 79, 0.3);
+}
+
+.goal-textarea::placeholder {
+    color: #888;
+}
+
+.generate-tasks-btn {
+    padding: 12px;
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.generate-tasks-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+}
+
+.generate-tasks-btn:active {
+    transform: translateY(0);
+}
+
+/* ===== EMPTY TASKS MESSAGE ===== */
+.empty-tasks-message {
+    background: var(--card-color);
+    border: 2px dashed rgba(255, 216, 79, 0.3);
+    border-radius: 14px;
+    padding: 30px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.empty-tasks-content h3 {
+    color: #ffd84f;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.empty-tasks-content > p {
+    color: var(--text-color);
+    font-size: 16px;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+.empty-tasks-instructions {
+    text-align: left;
+    background: rgba(255, 216, 79, 0.08);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.empty-tasks-instructions h4 {
+    color: #ffd84f;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.empty-tasks-instructions ol {
+    color: var(--text-color);
+    padding-left: 20px;
+    line-height: 1.8;
+}
+
+.empty-tasks-instructions li {
+    margin-bottom: 10px;
+}
+
+.empty-tasks-instructions strong {
+    color: #ffd84f;
 }

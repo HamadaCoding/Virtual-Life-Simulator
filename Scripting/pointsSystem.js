@@ -32,19 +32,22 @@ function calculateTotalPoints() {
     
     // Get lifetime points from player data (accumulated over time)
     let lifetimePoints = 0;
+    let spentTodayPoints = 0;
     if (window.playerAPI) {
         const playerData = window.playerAPI.getPlayerData();
         lifetimePoints = parseInt(playerData.total_points) || 0;
+        spentTodayPoints = parseInt(playerData.spent_today_points) || 0;
     }
     
-    // Total = lifetime points (already includes past days) + today's points
+    // Total = lifetime points (already includes past days) + today's points - spent today
     const todayPoints = taskPoints + xpPoints + streakPoints;
-    const total = lifetimePoints + todayPoints;
+    const availableTodayPoints = Math.max(0, todayPoints - spentTodayPoints);
+    const total = lifetimePoints + availableTodayPoints;
     
     return {
         total: total,
         lifetime: lifetimePoints,
-        today: todayPoints,
+        today: availableTodayPoints,
         breakdown: {
             tasks: taskPoints,
             xp: xpPoints,
@@ -72,6 +75,7 @@ function addPoints(amount) {
 
 /**
  * Deduct points (for purchases)
+ * Handles both lifetime points and today's points
  */
 function deductPoints(amount) {
     if (!window.playerAPI) return false;
@@ -82,12 +86,29 @@ function deductPoints(amount) {
     }
     
     const playerData = window.playerAPI.getPlayerData();
-    const currentPoints = parseInt(playerData.total_points) || 0;
-    const newTotal = Math.max(0, currentPoints - amount);
+    let currentLifetimePoints = parseInt(playerData.total_points) || 0;
+    let remainingToDeduct = amount;
     
-    window.playerAPI.updatePlayerData({
-        total_points: newTotal
-    });
+    // First, deduct from today's points if available
+    if (pointsData.today > 0 && remainingToDeduct > 0) {
+        const deductFromToday = Math.min(pointsData.today, remainingToDeduct);
+        // Today's points are calculated dynamically, so we need to reduce them
+        // by reducing the sources that contribute to today's points
+        // We'll track spent today points separately
+        const spentTodayPoints = parseInt(playerData.spent_today_points) || 0;
+        window.playerAPI.updatePlayerData({
+            spent_today_points: spentTodayPoints + deductFromToday
+        });
+        remainingToDeduct -= deductFromToday;
+    }
+    
+    // Then deduct from lifetime points
+    if (remainingToDeduct > 0) {
+        currentLifetimePoints = Math.max(0, currentLifetimePoints - remainingToDeduct);
+        window.playerAPI.updatePlayerData({
+            total_points: currentLifetimePoints
+        });
+    }
     
     return true;
 }

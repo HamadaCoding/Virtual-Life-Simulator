@@ -278,4 +278,3 @@ window.dailyTracker = {
 if (localStorage.getItem('currentUser')) {
     resetDailyDataIfNeeded();
 }
-

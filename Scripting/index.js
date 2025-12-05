@@ -71,6 +71,8 @@ const app = {
         
         // Listen for data updates
         window.addEventListener('playerDataUpdated', () => {
+            this.loadDataFromBackend(); // Reload health, motivation, etc.
+            this.updateUI(); // Update the UI with new data
             this.updateTodaySummary();
             this.updateShopPreview();
             this.updateActiveItems();
@@ -208,7 +210,10 @@ const app = {
         this.updateTodaySummary();
 
         // Redirect to Daily Tasks
-        window.location.href = "Structure/daily-tasks.html";
+        // Check if we're in Structure folder or root
+        const isInStructure = window.location.pathname.includes("Structure");
+        const basePath = isInStructure ? "" : "Structure/";
+        window.location.href = basePath + "daily-tasks.html";
     },
     
     updateTodaySummary() {
